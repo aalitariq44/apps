@@ -25,10 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _login() {
-    if (_formKey.currentState?.validate() ?? false) {
-      // Navigate to products screen
-      Navigator.pushReplacementNamed(context, '/products');
-    }
+    // Allow login without validation
+    Navigator.pushReplacementNamed(context, '/products');
   }
 
   @override
