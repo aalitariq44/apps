@@ -24,7 +24,7 @@ class Product {
     return [
       Product(
         id: '1',
-        name: 'Wireless Headphones',
+        name: 'Headphones',
         description: 'High-quality wireless headphones with noise cancellation and long battery life.',
         price: 199.99,
         imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500',

@@ -194,12 +194,12 @@ class _ProductsScreenState extends State<ProductsScreen> {
           Expanded(
             child: AnimationLimiter(
               child: GridView.builder(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.75,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
+                  childAspectRatio: 0.62, // تقليل النسبة ليصبح العرض أكبر
+                  crossAxisSpacing: 0,   // زيادة المسافة الأفقية
+                  mainAxisSpacing: 4,    // زيادة المسافة الرأسية
                 ),
                 itemCount: filteredProducts.length,
                 itemBuilder: (context, index) {
