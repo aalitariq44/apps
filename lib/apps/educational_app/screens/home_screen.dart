@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/course.dart';
 import '../models/user.dart';
 import '../widgets/course_card.dart';
+import '../widgets/side_bar.dart';
 import 'courses_list_screen.dart';
 import 'quiz_screen.dart';
 
@@ -22,22 +23,23 @@ class HomeScreen extends StatelessWidget {
     final enrolledCourses = courses.where((course) => course.isEnrolled).toList();
 
     return Scaffold(
+      drawer: SideBar(user: user, onLanguageToggle: onLanguageToggle),
       backgroundColor: const Color(0xFFF8F9FA),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 240,
+            expandedHeight: 260,
             floating: false,
             pinned: true,
             backgroundColor: Colors.transparent,
             elevation: 0,
-            actions: [
-              IconButton(
-                onPressed: onLanguageToggle,
-                icon: const Icon(Icons.language, color: Colors.white),
-                tooltip: isArabic ? 'اللغة' : 'Language',
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: const Icon(Icons.menu, color: Colors.white),
+                onPressed: () => Scaffold.of(context).openDrawer(),
               ),
-            ],
+            ),
+            actions: const [],
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 decoration: const BoxDecoration(
@@ -56,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 0),
+                        const SizedBox(height: 24),
                         Row(
                           children: [
                             Container(
