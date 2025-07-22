@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:interfaces/l10n/app_localizations.dart';
 import 'core/theme.dart';
 import 'core/models/app_info.dart';
 import 'apps/ecommerce/ecommerce_app.dart';
@@ -43,7 +44,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
       theme: AppTheme.lightTheme,
       locale: _currentLocale,
       localizationsDelegates: const [
-        // AppLocalizations.delegate,
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
