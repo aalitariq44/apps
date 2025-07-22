@@ -168,84 +168,75 @@ class _CartScreenState extends State<CartScreen> {
                                     const SizedBox(height: 8),
                                     
                                     // Quantity Controls
-                                    Row(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            border: Border.all(color: AppColors.border),
-                                            borderRadius: BorderRadius.circular(8),
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              IconButton(
-                                                onPressed: item.quantity > 1
-                                                    ? () => _updateQuantity(
-                                                        item.product.id,
-                                                        item.quantity - 1,
-                                                      )
-                                                    : null,
-                                                icon: const Icon(Icons.remove, size: 16),
-                                                padding: const EdgeInsets.all(4),
-                                                constraints: const BoxConstraints(
-                                                  minWidth: 32,
-                                                  minHeight: 32,
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.symmetric(
-                                                  horizontal: 12,
-                                                  vertical: 4,
-                                                ),
-                                                child: Text(
-                                                  item.quantity.toString(),
-                                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                                    fontWeight: FontWeight.w600,
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              border: Border.all(color: AppColors.border),
+                                              borderRadius: BorderRadius.circular(8),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                IconButton(
+                                                  onPressed: item.quantity > 1
+                                                      ? () => _updateQuantity(
+                                                          item.product.id,
+                                                          item.quantity - 1,
+                                                        )
+                                                      : null,
+                                                  icon: const Icon(Icons.remove, size: 16),
+                                                  padding: const EdgeInsets.all(4),
+                                                  constraints: const BoxConstraints(
+                                                    minWidth: 32,
+                                                    minHeight: 32,
                                                   ),
                                                 ),
-                                              ),
-                                              IconButton(
-                                                onPressed: () => _updateQuantity(
-                                                  item.product.id,
-                                                  item.quantity + 1,
+                                                Container(
+                                                  padding: const EdgeInsets.symmetric(
+                                                    horizontal: 6,
+                                                    vertical: 2,
+                                                  ),
+                                                  child: Text(
+                                                    item.quantity.toString(),
+                                                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                                      fontWeight: FontWeight.w600,
+                                                    ),
+                                                  ),
                                                 ),
-                                                icon: const Icon(Icons.add, size: 16),
-                                                padding: const EdgeInsets.all(4),
-                                                constraints: const BoxConstraints(
-                                                  minWidth: 32,
-                                                  minHeight: 32,
+                                                IconButton(
+                                                  onPressed: () => _updateQuantity(
+                                                    item.product.id,
+                                                    item.quantity + 1,
+                                                  ),
+                                                  icon: const Icon(Icons.add, size: 16),
+                                                  padding: const EdgeInsets.all(4),
+                                                  constraints: const BoxConstraints(
+                                                    minWidth: 32,
+                                                    minHeight: 32,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        const Spacer(),
-                                        
-                                        // Remove Button
-                                        IconButton(
-                                          onPressed: () => _removeItem(item.product.id),
-                                          icon: const Icon(Icons.delete_outline),
-                                          color: AppColors.error,
-                                        ),
-                                      ],
+                                          const SizedBox(width: 16),
+                                          // Remove Button
+                                          IconButton(
+                                            onPressed: () => _removeItem(item.product.id),
+                                            icon: const Icon(Icons.delete_outline),
+                                            color: AppColors.error,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                               
-                              // Total Price
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    '\$${item.totalPrice.toStringAsFixed(2)}',
-                                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                      color: AppColors.primary,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              // Removed total price from the right side
                             ],
                           ),
                         ),
