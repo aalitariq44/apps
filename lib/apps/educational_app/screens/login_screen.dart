@@ -1,54 +1,36 @@
 import 'package:flutter/material.dart';
 import '../models/user.dart';
 import 'home_screen.dart';
-import 'login_screen.dart';
+import 'signup_screen.dart' as signup;
 
-class SignupScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   final VoidCallback onLanguageToggle;
 
-  const SignupScreen({
+  const LoginScreen({
     super.key,
     required this.onLanguageToggle,
   });
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
   bool _isPasswordVisible = false;
-  bool _isConfirmPasswordVisible = false;
   bool _isLoading = false;
-  bool _agreeToTerms = false;
 
   @override
   void dispose() {
-    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-    _confirmPasswordController.dispose();
     super.dispose();
   }
 
-  Future<void> _signup() async {
-    if (!_formKey.currentState!.validate() || !_agreeToTerms) {
-      if (!_agreeToTerms) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              Localizations.localeOf(context).languageCode == 'ar'
-                  ? 'يجب الموافقة على الشروط والأحكام'
-                  : 'Please agree to terms and conditions',
-            ),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
+  Future<void> _login() async {
+    if (!_formKey.currentState!.validate()) {
       return;
     }
     setState(() {
@@ -63,6 +45,17 @@ class _SignupScreenState extends State<SignupScreen> {
       MaterialPageRoute(
         builder: (context) => HomeScreen(
           user: User.getDummyUser(),
+          onLanguageToggle: widget.onLanguageToggle,
+        ),
+      ),
+    );
+  }
+
+  void _showSignupScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => signup.SignupScreen(
           onLanguageToggle: widget.onLanguageToggle,
         ),
       ),
@@ -118,11 +111,11 @@ class _SignupScreenState extends State<SignupScreen> {
                           color: Colors.white.withOpacity(0.18),
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        child: const Icon(Icons.person_add_alt_1, color: Colors.white, size: 36),
+                        child: const Icon(Icons.lock_outline, color: Colors.white, size: 36),
                       ),
                       const SizedBox(height: 18),
                       Text(
-                        isArabic ? 'إنشاء حساب جديد' : 'Create Account',
+                        isArabic ? 'تسجيل الدخول' : 'Sign In',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 26,
@@ -131,7 +124,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        isArabic ? 'املأ البيانات لإنشاء حسابك.' : 'Fill in the details to create your account.',
+                        isArabic ? 'مرحبًا بعودتك! الرجاء تسجيل الدخول للمتابعة.' : 'Welcome back! Please sign in to continue.',
                         style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 15,
@@ -155,43 +148,6 @@ class _SignupScreenState extends State<SignupScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            isArabic ? 'الاسم الكامل' : 'Full Name',
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF2D3748),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          TextFormField(
-                            controller: _nameController,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return isArabic ? 'الاسم مطلوب' : 'Name is required';
-                              }
-                              if (value.length < 2) {
-                                return isArabic ? 'الاسم يجب أن يكون حرفين على الأقل' : 'Name must be at least 2 characters';
-                              }
-                              return null;
-                            },
-                            decoration: InputDecoration(
-                              hintText: isArabic ? 'أدخل اسمك الكامل' : 'Enter your full name',
-                              prefixIcon: const Icon(Icons.person_outline, color: Color(0xFF667eea)),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(color: Colors.grey[300]!),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(color: Color(0xFF667eea), width: 2),
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey[50],
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                            ),
-                          ),
-                          const SizedBox(height: 18),
                           Text(
                             isArabic ? 'البريد الإلكتروني' : 'Email',
                             style: const TextStyle(
@@ -278,95 +234,11 @@ class _SignupScreenState extends State<SignupScreen> {
                               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             ),
                           ),
-                          const SizedBox(height: 18),
-                          Text(
-                            isArabic ? 'تأكيد كلمة المرور' : 'Confirm Password',
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF2D3748),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          TextFormField(
-                            controller: _confirmPasswordController,
-                            obscureText: !_isConfirmPasswordVisible,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return isArabic ? 'تأكيد كلمة المرور مطلوب' : 'Password confirmation is required';
-                              }
-                              if (value != _passwordController.text) {
-                                return isArabic ? 'كلمتا المرور غير متطابقتين' : 'Passwords do not match';
-                              }
-                              return null;
-                            },
-                            decoration: InputDecoration(
-                              hintText: isArabic ? 'أعد إدخال كلمة المرور' : 'Re-enter your password',
-                              prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF667eea)),
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-                                  });
-                                },
-                                icon: Icon(
-                                  _isConfirmPasswordVisible ? Icons.visibility_off : Icons.visibility,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(color: Colors.grey[300]!),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(color: Color(0xFF667eea), width: 2),
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey[50],
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                            ),
-                          ),
-                          const SizedBox(height: 18),
-                          Row(
-                            children: [
-                              Checkbox(
-                                value: _agreeToTerms,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _agreeToTerms = value ?? false;
-                                  });
-                                },
-                                activeColor: const Color(0xFF667eea),
-                              ),
-                              Expanded(
-                                child: Text.rich(
-                                  TextSpan(
-                                    text: isArabic ? 'أوافق على ' : 'I agree to the ',
-                                    style: TextStyle(
-                                      color: Colors.grey[700],
-                                      fontSize: 14,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                        text: isArabic ? 'الشروط والأحكام' : 'Terms and Conditions',
-                                        style: const TextStyle(
-                                          color: Color(0xFF667eea),
-                                          fontWeight: FontWeight.w600,
-                                          decoration: TextDecoration.underline,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                           const SizedBox(height: 28),
                           SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                              onPressed: _isLoading ? null : _signup,
+                              onPressed: _isLoading ? null : _login,
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFF667eea),
                                 foregroundColor: Colors.white,
@@ -386,7 +258,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                       ),
                                     )
                                   : Text(
-                                      isArabic ? 'إنشاء الحساب' : 'Create Account',
+                                      isArabic ? 'تسجيل الدخول' : 'Sign In',
                                       style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -397,26 +269,17 @@ class _SignupScreenState extends State<SignupScreen> {
                           const SizedBox(height: 18),
                           Center(
                             child: TextButton(
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginScreen(
-                                      onLanguageToggle: widget.onLanguageToggle,
-                                    ),
-                                  ),
-                                );
-                              },
+                              onPressed: _showSignupScreen,
                               child: Text.rich(
                                 TextSpan(
-                                  text: isArabic ? 'لديك حساب بالفعل؟ ' : "Already have an account? ",
+                                  text: isArabic ? 'ليس لديك حساب؟ ' : "Don't have an account? ",
                                   style: TextStyle(
                                     color: Colors.grey[600],
                                     fontSize: 14,
                                   ),
                                   children: [
                                     TextSpan(
-                                      text: isArabic ? 'تسجيل الدخول' : 'Sign In',
+                                      text: isArabic ? 'إنشاء حساب جديد' : 'Create Account',
                                       style: const TextStyle(
                                         color: Color(0xFF667eea),
                                         fontWeight: FontWeight.w600,

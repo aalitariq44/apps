@@ -5,6 +5,7 @@ import '../../core/theme.dart';
 import 'models/user.dart';
 import 'screens/signup_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/login_screen.dart';
 
 class EducationalApp extends StatefulWidget {
   const EducationalApp({super.key});
@@ -127,7 +128,7 @@ class _EducationalAppState extends State<EducationalApp> {
               user: _currentUser!,
               onLanguageToggle: _toggleLanguage,
             )
-          : SignupScreen(onLanguageToggle: _toggleLanguage),
+          : LoginScreen(onLanguageToggle: _toggleLanguage),
     );
   }
 }
