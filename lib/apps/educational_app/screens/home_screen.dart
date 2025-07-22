@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 280,
+            expandedHeight: 240,
             floating: false,
             pinned: true,
             backgroundColor: Colors.transparent,
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 60),
+                        const SizedBox(height: 0),
                         Row(
                           children: [
                             Container(
@@ -119,6 +119,7 @@ class HomeScreen extends StatelessWidget {
                               title: isArabic ? 'المعدل' : 'Average',
                               value: '${user.averageScore.toStringAsFixed(0)}%',
                             ),
+                            
                           ],
                         ),
                       ],
@@ -239,7 +240,7 @@ class HomeScreen extends StatelessWidget {
   }) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8), // Reduced padding
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.15),
           borderRadius: BorderRadius.circular(16),
@@ -248,18 +249,19 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               icon,
               color: Colors.white,
-              size: 24,
+              size: 18, // Reduced icon size
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 4), // Reduced spacing
             Text(
               value,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: 16, // Reduced font size
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -267,7 +269,7 @@ class HomeScreen extends StatelessWidget {
               title,
               style: const TextStyle(
                 color: Colors.white70,
-                fontSize: 12,
+                fontSize: 10, // Reduced font size
               ),
               textAlign: TextAlign.center,
             ),
