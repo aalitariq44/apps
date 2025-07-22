@@ -14,11 +14,6 @@ import 'apps/ecommerce/screens/products_screen.dart';
 import 'apps/ecommerce/screens/profile_screen.dart';
 import 'apps/task_manager/task_manager_app.dart';
 import 'apps/hotel_booking/hotel_booking_app.dart';
-import 'apps/task_manager/models/task.dart';
-import 'apps/task_manager/screens/task_details_screen.dart';
-import 'apps/task_manager/screens/edit_task_screen.dart';
-
-
 void main() {
   runApp(const PortfolioApp());
 }
@@ -87,28 +82,6 @@ class _PortfolioAppState extends State<PortfolioApp> {
             builder: (context) => ProductDetailsScreen(
               product: product,
               cart: _cart,
-            ),
-          );
-        }
-        if (settings.name == '/task-details') {
-          final task = settings.arguments as Task;
-          return MaterialPageRoute(
-            builder: (context) => TaskDetailsScreen(
-              task: task,
-              onTaskUpdated: (updatedTask) {},
-              onTaskDeleted: (taskId) {},
-              onLanguageToggle: _toggleLanguage,
-            ),
-          );
-        }
-
-        if (settings.name == '/edit-task') {
-          final task = settings.arguments as Task;
-          return MaterialPageRoute(
-            builder: (context) => EditTaskScreen(
-              task: task,
-              onTaskUpdated: (updatedTask) {},
-              onLanguageToggle: _toggleLanguage,
             ),
           );
         }

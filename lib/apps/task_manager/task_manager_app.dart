@@ -82,23 +82,14 @@ class _TaskManagerAppState extends State<TaskManagerApp> {
         Locale('en', ''),
         Locale('ar', ''),
       ],
-      home: SignUpScreen(
-        onLanguageToggle: _toggleLanguage,
-        onSignUpComplete: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => TasksListScreen(
-                tasks: _tasks,
-                currentUser: _currentUser,
-                onLanguageToggle: _toggleLanguage,
-                onThemeToggle: _toggleTheme,
-                isDarkMode: _isDarkMode,
-              ),
-            ),
-          );
-        },
-      ),
+      initialRoute: '/',
       routes: {
+        '/': (context) => SignUpScreen(
+              onLanguageToggle: _toggleLanguage,
+              onSignUpComplete: () {
+                Navigator.pushReplacementNamed(context, '/tasks');
+              },
+            ),
         '/tasks': (context) => TasksListScreen(
               tasks: _tasks,
               currentUser: _currentUser,
@@ -119,7 +110,29 @@ class _TaskManagerAppState extends State<TaskManagerApp> {
             ),
       },
       onGenerateRoute: (settings) {
-        // This is now handled in main.dart
+        if (settings.name == '/task-details') {
+          final task = settings.arguments as Task;
+          return MaterialPageRoute(
+            builder: (context) => TaskDetailsScreen(
+              task: task,
+              onTaskUpdated: _updateTask,
+              onTaskDeleted: _deleteTask,
+              onLanguageToggle: _toggleLanguage,
+            ),
+          );
+        }
+
+        if (settings.name == '/edit-task') {
+          final task = settings.arguments as Task;
+          return MaterialPageRoute(
+            builder: (context) => EditTaskScreen(
+              task: task,
+              onTaskUpdated: _updateTask,
+              onLanguageToggle: _toggleLanguage,
+            ),
+          );
+        }
+
         return null;
       },
     );
