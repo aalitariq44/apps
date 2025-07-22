@@ -118,13 +118,24 @@ class PortfolioHomePage extends StatelessWidget {
               ),
             ],
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(
+                centerTitle: true,
+                title: Text(
                 appTitle,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
+                  shadows: [
+                  Shadow(
+                    color: Colors.black.withOpacity(0.3),
+                    offset: const Offset(0, 2),
+                    blurRadius: 6,
+                  ),
+                  ],
                 ),
-              ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                ),
               background: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(

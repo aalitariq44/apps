@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:interfaces/l10n/app_localizations.dart';
 import '../../../core/colors.dart';
 
 class ProfileScreen extends StatelessWidget {
