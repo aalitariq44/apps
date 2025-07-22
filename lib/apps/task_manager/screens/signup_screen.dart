@@ -114,20 +114,8 @@ class _SignUpScreenState extends State<SignUpScreen>
   }
 
   void _handleSignUp() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        _isLoading = true;
-      });
-
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
-
-      setState(() {
-        _isLoading = false;
-      });
-
-      widget.onSignUpComplete();
-    }
+    // تجاوز شاشة التسجيل مباشرة بدون التحقق من الحقول
+    widget.onSignUpComplete();
   }
 
   void _navigateToLogin() {
