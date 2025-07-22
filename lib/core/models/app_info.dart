@@ -46,6 +46,15 @@ class AppInfo {
         technologies: ['Flutter', 'Dart', 'Material Design', 'Animations', 'Forms'],
         category: 'Travel & Hospitality',
       ),
+      AppInfo(
+        id: '4',
+        name: 'Educational App',
+        description: 'Beautiful educational platform with courses, quizzes, and clean UI design. Features soft colors, smooth navigation, and Arabic/English support.',
+        route: '/educational-app',
+        imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500',
+        technologies: ['Flutter', 'Dart', 'Material Design', 'Localization', 'Soft UI'],
+        category: 'Education',
+      ),
       // More apps can be added here in the future
     ];
   }

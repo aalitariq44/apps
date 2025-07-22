@@ -14,6 +14,7 @@ import 'apps/ecommerce/screens/products_screen.dart';
 import 'apps/ecommerce/screens/profile_screen.dart';
 import 'apps/task_manager/task_manager_app.dart';
 import 'apps/hotel_booking/hotel_booking_app.dart';
+import 'apps/educational_app/educational_app.dart';
 void main() {
   runApp(const PortfolioApp());
 }
@@ -59,6 +60,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
         '/ecommerce': (context) => const EcommerceApp(),
         '/task-manager': (context) => const TaskManagerApp(),
         '/hotel-booking': (context) => const HotelBookingApp(),
+        '/educational-app': (context) => const EducationalApp(),
         '/login': (context) => const LoginScreen(),
         '/products': (context) => ProductsScreen(
               cart: _cart,
