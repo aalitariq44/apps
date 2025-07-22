@@ -76,4 +76,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dontHaveAccount => 'ليس لديك حساب؟';
+
+  @override
+  String get taskManager => 'مدير المهام';
+
+  @override
+  String get tasks => 'المهام';
+
+  @override
+  String get createTask => 'إنشاء مهمة';
+
+  @override
+  String get editTask => 'تعديل المهمة';
+
+  @override
+  String get deleteTask => 'حذف المهمة';
+
+  @override
+  String get taskDetails => 'تفاصيل المهمة';
+
+  @override
+  String get priority => 'الأولوية';
+
+  @override
+  String get status => 'الحالة';
+
+  @override
+  String get dueDate => 'تاريخ الاستحقاق';
+
+  @override
+  String get accountSettings => 'إعدادات الحساب';
 }

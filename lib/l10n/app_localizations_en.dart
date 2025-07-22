@@ -76,4 +76,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dontHaveAccount => 'Don\'t have an account?';
+
+  @override
+  String get taskManager => 'Task Manager';
+
+  @override
+  String get tasks => 'Tasks';
+
+  @override
+  String get createTask => 'Create Task';
+
+  @override
+  String get editTask => 'Edit Task';
+
+  @override
+  String get deleteTask => 'Delete Task';
+
+  @override
+  String get taskDetails => 'Task Details';
+
+  @override
+  String get priority => 'Priority';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get dueDate => 'Due Date';
+
+  @override
+  String get accountSettings => 'Account Settings';
 }

@@ -91,5 +91,45 @@
   "dontHaveAccount": "Don't have an account?",
   "@dontHaveAccount": {
     "description": "Don't have account text"
+  },
+  "taskManager": "Task Manager",
+  "@taskManager": {
+    "description": "Task Manager application name"
+  },
+  "tasks": "Tasks",
+  "@tasks": {
+    "description": "Tasks label"
+  },
+  "createTask": "Create Task",
+  "@createTask": {
+    "description": "Create task button text"
+  },
+  "editTask": "Edit Task",
+  "@editTask": {
+    "description": "Edit task button text"
+  },
+  "deleteTask": "Delete Task",
+  "@deleteTask": {
+    "description": "Delete task button text"
+  },
+  "taskDetails": "Task Details",
+  "@taskDetails": {
+    "description": "Task details screen title"
+  },
+  "priority": "Priority",
+  "@priority": {
+    "description": "Priority label"
+  },
+  "status": "Status",
+  "@status": {
+    "description": "Status label"
+  },
+  "dueDate": "Due Date",
+  "@dueDate": {
+    "description": "Due date label"
+  },
+  "accountSettings": "Account Settings",
+  "@accountSettings": {
+    "description": "Account settings screen title"
   }
 }

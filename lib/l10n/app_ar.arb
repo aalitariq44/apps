@@ -22,5 +22,15 @@
   "language": "اللغة",
   "enterEmail": "أدخل بريدك الإلكتروني",
   "enterPassword": "أدخل كلمة المرور",
-  "dontHaveAccount": "ليس لديك حساب؟"
+  "dontHaveAccount": "ليس لديك حساب؟",
+  "taskManager": "مدير المهام",
+  "tasks": "المهام",
+  "createTask": "إنشاء مهمة",
+  "editTask": "تعديل المهمة",
+  "deleteTask": "حذف المهمة",
+  "taskDetails": "تفاصيل المهمة",
+  "priority": "الأولوية",
+  "status": "الحالة",
+  "dueDate": "تاريخ الاستحقاق",
+  "accountSettings": "إعدادات الحساب"
 }

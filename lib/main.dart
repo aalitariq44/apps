@@ -12,6 +12,8 @@ import 'apps/ecommerce/screens/login_screen.dart';
 import 'apps/ecommerce/screens/product_details_screen.dart';
 import 'apps/ecommerce/screens/products_screen.dart';
 import 'apps/ecommerce/screens/profile_screen.dart';
+import 'apps/task_manager/task_manager_app.dart';
+import 'apps/hotel_booking/hotel_booking_app.dart';
 
 void main() {
   runApp(const PortfolioApp());
@@ -56,6 +58,8 @@ class _PortfolioAppState extends State<PortfolioApp> {
       home: PortfolioHomePage(onLanguageToggle: _toggleLanguage),
       routes: {
         '/ecommerce': (context) => const EcommerceApp(),
+        '/task-manager': (context) => const TaskManagerApp(),
+        '/hotel-booking': (context) => const HotelBookingApp(),
         '/login': (context) => const LoginScreen(),
         '/products': (context) => ProductsScreen(
               cart: _cart,
@@ -118,24 +122,13 @@ class PortfolioHomePage extends StatelessWidget {
               ),
             ],
             flexibleSpace: FlexibleSpaceBar(
-                centerTitle: true,
-                title: Text(
+              title: Text(
                 appTitle,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  shadows: [
-                  Shadow(
-                    color: Colors.black.withOpacity(0.3),
-                    offset: const Offset(0, 2),
-                    blurRadius: 6,
-                  ),
-                  ],
                 ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                ),
+              ),
               background: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
