@@ -42,7 +42,9 @@ class _CartScreenState extends State<CartScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              widget.cart.clear();
+              setState(() {
+                widget.cart.clear();
+              });
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },

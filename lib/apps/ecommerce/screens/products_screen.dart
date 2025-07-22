@@ -219,7 +219,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             );
                           },
                           onAddToCart: () {
-                            widget.cart.addItem(filteredProducts[index]);
+                            setState(() {
+                              widget.cart.addItem(filteredProducts[index]);
+                            });
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text('${filteredProducts[index].name} added to cart'),
