@@ -142,68 +142,65 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Expanded(
-                      child: _buildActionCard(
-                        context,
-                        icon: Icons.library_books,
-                        title: isArabic ? 'دوراتي' : 'My Courses',
-                        subtitle: isArabic ? 'عرض الدورات المسجلة' : 'View enrolled courses',
-                        color: const Color(0xFF4299E1),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CoursesListScreen(
-                                onLanguageToggle: onLanguageToggle,
-                                showEnrolledOnly: true,
-                              ),
+                    _buildActionCard(
+                      context,
+                      icon: Icons.library_books,
+                      title: isArabic ? 'دوراتي' : 'My Courses',
+                      subtitle: isArabic ? 'عرض الدورات المسجلة' : 'View enrolled courses',
+                      color: const Color(0xFF4299E1),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CoursesListScreen(
+                              onLanguageToggle: onLanguageToggle,
+                              showEnrolledOnly: true,
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: _buildActionCard(
-                        context,
-                        icon: Icons.explore,
-                        title: isArabic ? 'دورات جديدة' : 'New Courses',
-                        subtitle: isArabic ? 'استكشف دورات جديدة' : 'Explore new courses',
-                        color: const Color(0xFF48BB78),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CoursesListScreen(
-                                onLanguageToggle: onLanguageToggle,
-                                showEnrolledOnly: false,
-                              ),
+                    const SizedBox(height: 16),
+                    _buildActionCard(
+                      context,
+                      icon: Icons.explore,
+                      title: isArabic ? 'دورات جديدة' : 'New Courses',
+                      subtitle: isArabic ? 'استكشف دورات جديدة' : 'Explore new courses',
+                      color: const Color(0xFF48BB78),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CoursesListScreen(
+                              onLanguageToggle: onLanguageToggle,
+                              showEnrolledOnly: false,
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    _buildActionCard(
+                      context,
+                      icon: Icons.quiz,
+                      title: isArabic ? 'اختبارات قصيرة' : 'Quick Tests',
+                      subtitle: isArabic ? 'قم بإجراء اختبار سريع' : 'Take a quick test',
+                      color: const Color(0xFFED8936),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuizScreen(
+                              onLanguageToggle: onLanguageToggle,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
-                ),
-                const SizedBox(height: 16),
-                _buildActionCard(
-                  context,
-                  icon: Icons.quiz,
-                  title: isArabic ? 'اختبارات قصيرة' : 'Quick Tests',
-                  subtitle: isArabic ? 'قم بإجراء اختبار سريع' : 'Take a quick test',
-                  color: const Color(0xFFED8936),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => QuizScreen(
-                          onLanguageToggle: onLanguageToggle,
-                        ),
-                      ),
-                    );
-                  },
                 ),
                 
                 const SizedBox(height: 32),

@@ -30,9 +30,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login() async {
-    if (!_formKey.currentState!.validate()) {
-      return;
-    }
     setState(() {
       _isLoading = true;
     });
@@ -160,15 +157,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextFormField(
                             controller: _emailController,
                             keyboardType: TextInputType.emailAddress,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return isArabic ? 'البريد الإلكتروني مطلوب' : 'Email is required';
-                              }
-                              if (!value.contains('@') || !value.contains('.')) {
-                                return isArabic ? 'تنسيق البريد الإلكتروني غير صحيح' : 'Invalid email format';
-                              }
-                              return null;
-                            },
                             decoration: InputDecoration(
                               hintText: isArabic ? 'أدخل بريدك الإلكتروني' : 'Enter your email',
                               prefixIcon: const Icon(Icons.email_outlined, color: Color(0xFF667eea)),
@@ -198,15 +186,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextFormField(
                             controller: _passwordController,
                             obscureText: !_isPasswordVisible,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return isArabic ? 'كلمة المرور مطلوبة' : 'Password is required';
-                              }
-                              if (value.length < 6) {
-                                return isArabic ? 'كلمة المرور يجب أن تكون 6 أحرف على الأقل' : 'Password must be at least 6 characters';
-                              }
-                              return null;
-                            },
                             decoration: InputDecoration(
                               hintText: isArabic ? 'أدخل كلمة المرور' : 'Enter your password',
                               prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF667eea)),
