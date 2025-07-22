@@ -1,0 +1,95 @@
+{
+  "@@locale": "en",
+  "appTitle": "Interfaces Portfolio",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "ecommerceApp": "E-commerce App",
+  "@ecommerceApp": {
+    "description": "E-commerce application name"
+  },
+  "welcome": "Welcome",
+  "@welcome": {
+    "description": "Welcome message"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Login button text"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Email field label"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Password field label"
+  },
+  "register": "Register",
+  "@register": {
+    "description": "Register button text"
+  },
+  "products": "Products",
+  "@products": {
+    "description": "Products screen title"
+  },
+  "productDetails": "Product Details",
+  "@productDetails": {
+    "description": "Product details screen title"
+  },
+  "addToCart": "Add to Cart",
+  "@addToCart": {
+    "description": "Add to cart button text"
+  },
+  "cart": "Cart",
+  "@cart": {
+    "description": "Cart screen title"
+  },
+  "profile": "Profile",
+  "@profile": {
+    "description": "Profile screen title"
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Logout button text"
+  },
+  "checkout": "Checkout",
+  "@checkout": {
+    "description": "Checkout button text"
+  },
+  "price": "Price",
+  "@price": {
+    "description": "Price label"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "Description label"
+  },
+  "quantity": "Quantity",
+  "@quantity": {
+    "description": "Quantity label"
+  },
+  "total": "Total",
+  "@total": {
+    "description": "Total price label"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings label"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language setting label"
+  },
+  "enterEmail": "Enter your email",
+  "@enterEmail": {
+    "description": "Email placeholder text"
+  },
+  "enterPassword": "Enter your password",
+  "@enterPassword": {
+    "description": "Password placeholder text"
+  },
+  "dontHaveAccount": "Don't have an account?",
+  "@dontHaveAccount": {
+    "description": "Don't have account text"
+  }
+}
