@@ -119,53 +119,7 @@ class _TaskManagerAppState extends State<TaskManagerApp> {
             ),
       },
       onGenerateRoute: (settings) {
-        if (settings.name == '/task-details') {
-          final args = settings.arguments as Map<String, dynamic>?;
-          final task = args?['task'] as Task?;
-          if (task == null) {
-            return MaterialPageRoute(
-              builder: (context) => TasksListScreen(
-                tasks: _tasks,
-                currentUser: _currentUser,
-                onLanguageToggle: _toggleLanguage,
-                onThemeToggle: _toggleTheme,
-                isDarkMode: _isDarkMode,
-              ),
-            );
-          }
-          return MaterialPageRoute(
-            builder: (context) => TaskDetailsScreen(
-              task: task,
-              onTaskUpdated: _updateTask,
-              onTaskDeleted: _deleteTask,
-              onLanguageToggle: _toggleLanguage,
-            ),
-          );
-        }
-
-        if (settings.name == '/edit-task') {
-          final args = settings.arguments as Map<String, dynamic>?;
-          final task = args?['task'] as Task?;
-          if (task == null) {
-            return MaterialPageRoute(
-              builder: (context) => TasksListScreen(
-                tasks: _tasks,
-                currentUser: _currentUser,
-                onLanguageToggle: _toggleLanguage,
-                onThemeToggle: _toggleTheme,
-                isDarkMode: _isDarkMode,
-              ),
-            );
-          }
-          return MaterialPageRoute(
-            builder: (context) => EditTaskScreen(
-              task: task,
-              onTaskUpdated: _updateTask,
-              onLanguageToggle: _toggleLanguage,
-            ),
-          );
-        }
-
+        // This is now handled in main.dart
         return null;
       },
     );

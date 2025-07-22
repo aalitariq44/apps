@@ -314,7 +314,7 @@ class _TasksListScreenState extends State<TasksListScreen>
                               Navigator.pushNamed(
                                 context,
                                 '/task-details',
-                                arguments: {'task': task},
+                                arguments: task,
                               );
                             },
                             index: index,
